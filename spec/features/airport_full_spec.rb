@@ -19,6 +19,6 @@ describe 'Airport Full' do
     end
 
     def then_the_plane_should_not_be_able_to_land_at_the_airport
-        expect { @airport.land(@plane) }.to raise_error("Airport Full")
+        expect { @airport.land(@plane) }.to raise_error("Cannot Land: Airport Full")
     end
 end

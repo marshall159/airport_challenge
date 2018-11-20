@@ -8,7 +8,7 @@ class Airport
     end
 
     def land(plane)
-        raise("Airport Full") if full?
+        raise("Cannot Land: Airport Full") if full?
         planes << plane 
         plane 
     end
