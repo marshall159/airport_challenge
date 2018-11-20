@@ -21,8 +21,10 @@ describe 'Take Off' do
     end
 
     def when_the_plane_is_instructed_to_take_off
+        @airport.take_off(@plane)
     end
 
     def then_the_plane_should_no_longer_be_in_the_airport
+        expect(@airport.planes).not_to include(@plane)
     end
 end
