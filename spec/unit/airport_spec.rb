@@ -6,7 +6,7 @@ describe Airport do
 
     describe "#land" do
         it "returns the plane which has landed" do
-            expect(airport.land(plane)).to eq(plane) 
+            expect(airport.land(plane)).to eq(plane)
         end
     end
 
@@ -35,6 +35,19 @@ describe Airport do
             plane_taken_off = airport.take_off(plane)
 
             expect(plane_taken_off).to eq(plane)
+        end
+    end
+
+    describe "capacity" do
+        it "has a default capacity" do
+            expect(airport.capacity).to eq(described_class::DEFAULT_CAPACITY)
+        end
+
+        it "raises an error if the airport is full and a plane tries to land" do
+            airport.capacity.times { airport.land(plane) }
+
+            expect { airport.land(plane) }.to raise_error("Airport Full")
+            expect(airport.planes.count).to eq(airport.capacity)
         end
     end
    
