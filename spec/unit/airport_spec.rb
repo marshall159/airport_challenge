@@ -1,8 +1,9 @@
 require 'airport'
 
 describe Airport do
-    subject(:airport) { described_class.new }
     let(:plane) { double("Plane") }
+    let(:weather) { double("Weather", stormy?: false) }
+    subject(:airport) { described_class.new(weather) }
 
     describe "#land" do
         it "returns the plane which has landed" do
@@ -17,6 +18,23 @@ describe Airport do
                 expect(airport.planes.count).to eq(airport.capacity)
             end
         end
+
+        context "stormy weather" do
+            it "raises an error" do
+                allow(weather).to receive(:stormy?).and_return(true)
+
+                expect { airport.land(plane) }.to raise_error("Cannot Land: Stormy Weather")
+            end
+        end
+
+        # context "sunny weather" do
+        #     it "returns false" do
+        #         allow(weather).to receive(:stormy?).and_return(false)
+
+        #         expect(airport.land(plane)).not_to raise_error("Cannot Land: Stormy Weather")
+        #         expect { airport.land(plane) }.to change { airport.planes.count }.by(1)
+        #     end
+        # end
     end
 
     describe "#planes" do

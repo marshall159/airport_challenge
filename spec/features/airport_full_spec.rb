@@ -10,7 +10,8 @@ describe 'Airport Full' do
     end
 
     def given_there_is_an_airport
-        @airport = Airport.new 
+        @weather = double("Weather", stormy?: false)
+        @airport = Airport.new(@weather)
     end
 
     def when_the_airport_is_full

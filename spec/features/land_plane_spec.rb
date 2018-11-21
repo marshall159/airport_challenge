@@ -15,7 +15,8 @@ describe 'Land' do
     end
 
     def and_there_is_an_airport
-        @airport = Airport.new 
+        @weather = double("Weather", stormy?: false)
+        @airport = Airport.new(@weather)
     end
 
     def when_the_plane_is_instructed_to_land
