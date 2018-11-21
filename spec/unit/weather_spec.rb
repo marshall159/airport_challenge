@@ -5,7 +5,7 @@ describe Weather do
 
     describe "#stormy?" do 
         it "returns whether the weather is stormy" do
-            expect(weather).to respond_to(:stormy?)
+            expect(weather.stormy?).to eq(false) | eq(true)
         end
 
         # MOVE THESE TESTS INTO AIRPORT AND MOCK WEATHER
