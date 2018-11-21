@@ -54,6 +54,14 @@ describe Airport do
 
             expect(plane_taken_off).to eq(plane)
         end
+
+        context "stormy weather" do
+            it "raises an error" do
+                allow(weather).to receive(:stormy?).and_return(true)
+
+                expect { airport.take_off(plane) }.to raise_error("Cannot Take Off: Stormy Weather")
+            end
+        end
     end
    
 end
