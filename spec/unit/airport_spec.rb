@@ -26,15 +26,6 @@ describe Airport do
                 expect { airport.land(plane) }.to raise_error("Cannot Land: Stormy Weather")
             end
         end
-
-        # context "sunny weather" do
-        #     it "returns false" do
-        #         allow(weather).to receive(:stormy?).and_return(false)
-
-        #         expect(airport.land(plane)).not_to raise_error("Cannot Land: Stormy Weather")
-        #         expect { airport.land(plane) }.to change { airport.planes.count }.by(1)
-        #     end
-        # end
     end
 
     describe "#planes" do
